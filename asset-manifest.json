@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/courses-for-genesis/static/css/main.073c9b0a.css",
+    "main.js": "/courses-for-genesis/static/js/main.7e333927.js",
+    "static/js/787.8970ac97.chunk.js": "/courses-for-genesis/static/js/787.8970ac97.chunk.js",
+    "static/media/logo.svg": "/courses-for-genesis/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/courses-for-genesis/index.html",
+    "main.073c9b0a.css.map": "/courses-for-genesis/static/css/main.073c9b0a.css.map",
+    "main.7e333927.js.map": "/courses-for-genesis/static/js/main.7e333927.js.map",
+    "787.8970ac97.chunk.js.map": "/courses-for-genesis/static/js/787.8970ac97.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.7e333927.js"
+  ]
+}
