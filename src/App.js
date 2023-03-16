@@ -13,21 +13,21 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Routes>
-            <Route path="/" element={<NavBar />}>
-              <Route index path="courses" element={<Courses />} />
-              <Route path="course/:courseId" element={<Course />} />
-              {/* <Route path="movies/:movieId" element={<MovieDetails />}>
+      {/* <div> */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<NavBar />}>
+            <Route index element={<Courses />} />
+            <Route path="course/:courseId" element={<Course />} />
+            {/* <Route path="movies/:movieId" element={<MovieDetails />}>
               <Route path="cast" element={<Cast />} />
               <Route path="reviews" element={<Reviews />} />
             </Route> */}
-              <Route path="*" element={<Navigate to="/courses" />} />
-            </Route>
-          </Routes>
-        </Suspense>
-      </div>
+            <Route path="*" element={<Navigate to="/courses" />} />
+          </Route>
+        </Routes>
+      </Suspense>
+      {/* </div> */}
     </ThemeProvider>
   );
 }
