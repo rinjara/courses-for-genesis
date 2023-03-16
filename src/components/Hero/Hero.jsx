@@ -28,8 +28,8 @@ function Hero() {
         >
           Explore our catalog of courses available at Genesis Academy, a tech
           company dedicated to providing top-quality education in the latest
-          technologies. From web development to data science, we've got you
-          covered. Browse our courses and start your learning journey today!
+          technologies. Browse our courses and start your learning journey
+          today!
         </Typography>
         <Stack
           sx={{ pt: 4 }}

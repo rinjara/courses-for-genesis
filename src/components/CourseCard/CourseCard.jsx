@@ -3,165 +3,122 @@ import {
   Card,
   CardActions,
   CardContent,
+  CardMedia,
+  Collapse,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
   Typography,
 } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
+import styled from '@emotion/styled';
 
-// function CourseCard({ data }) {
-//   const [hovered, setHovered] = useState(false);
-
-//   const { title, previewImageLink, lessonsCount, rating, meta } = data;
-//   const { skills, courseVideoPreview } = meta;
-//   //   console.log(`${previewImageLink}/cover.webp`);
-//   //   console.log(courseVideoPreview.link);
-
-//   return (
-//     <Card
-//       sx={{
-//         height: '100%',
-//         display: 'flex',
-//         flexDirection: 'column',
-//       }}
-//     >
-//       {/* <Typography gutterBottom variant="h6" component="h2">
-//         {title}
-//       </Typography> */}
-//       <CardMedia
-//         component="img"
-//         image={`${previewImageLink}/cover.webp`}
-//         src="https://www.youtube.com/watch?v=dzOrUmK4Qyw&list=PLillGF-RfqbY3c2r0htQyVbDJJoBFE6Rb&index=5"
-//         // onMouseEnter={() => setHovered(true)}
-//         // onMouseLeave={() => setHovered(false)}
-//         // autoPlay={hovered}
-//         // loop={hovered}
-//         // muted={true}
-//         // style={{ height: 0, paddingTop: '56.25%' }}
-//         // sx={{
-//         //   // 16:9
-//         //   pt: '56.25%',
-//         // }}
-//         // alt="random"
-//         // component={courseVideoPreview ? 'video' : 'img'}
-//         // image={
-//         //   courseVideoPreview
-//         //     ? courseVideoPreview.link
-//         //     : `${previewImageLink}/cover.webp`
-//         // }
-//         // src={courseVideoPreview ? courseVideoPreview.link : null}
-//         // onMouseEnter={() => setHovered(true)}
-//         // onMouseLeave={() => setHovered(false)}
-//         // autoPlay={hovered}
-//         // loop={hovered}
-//         // muted={hovered}
-//         // style={{ height: 0, paddingTop: '56.25%' }}
-//         // component="img"
-//         sx={{
-//           // 16:9
-//           pt: '56.25%',
-//         }}
-//         // alt="random"
-//       />
-//       <CardContent sx={{ flexGrow: 1 }}>
-//         <Typography gutterBottom variant="h5" component="h2">
-//           {title}
-//         </Typography>
-//         <Typography>
-//           This is a media card. You can use this section to describe the
-//           content.
-//         </Typography>
-//       </CardContent>
-//       <CardActions>
-//         <Button size="small">View</Button>
-//         <Button size="small">Edit</Button>
-//       </CardActions>
-//     </Card>
-//   );
-// }
+const ExpandMore = styled(props => {
+  const { expand, ...other } = props;
+  return <IconButton {...other} />;
+})(({ theme, expand }) => ({
+  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+  marginLeft: 'auto',
+  transition: theme.transitions.create('transform', {
+    duration: theme.transitions.duration.shortest,
+  }),
+}));
 
 function CourseCard({ data }) {
   const [hovered, setHovered] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
 
   const { title, previewImageLink, lessonsCount, rating, meta } = data;
-  const { courseVideoPreview } = meta; //skills,
-  const hasVideo = courseVideoPreview && courseVideoPreview.link !== undefined;
+  const { skills, courseVideoPreview } = meta;
+  const hasVideo = courseVideoPreview !== undefined;
 
   return (
-    <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-      {/* {hasVideo && (
-        <CardMedia
-          component="iframe"
-          src={courseVideoPreview.link}
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-          //   width="100%"
-          //   height="auto"
-          //   style={{ display: hovered ? 'block' : 'none' }}
-          //   title={title}
-          //   allowFullScreen
-        />
-      )} */}
-
-      {hasVideo && (
-        <div
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-        >
-          <ReactPlayer
-            url={`https://cors-proxy.fringe.zone/${courseVideoPreview.link}`}
-            playing={hovered}
-            loop={hovered}
-            muted={true}
-            controls={false}
-            light={`${previewImageLink}/cover.webp`}
-            width="100%"
-            height="100%"
-          />
-        </div>
-      )}
-
-      {/* {hasVideo ? (
-        <CardMedia
-          component="iframe"
-          src={courseVideoPreview.link}
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
+    <Card
+      sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      {hasVideo && hovered ? (
+        <ReactPlayer
+          url={`https://cors-proxy.fringe.zone/${courseVideoPreview.link}`}
+          playing={hovered}
+          loop={hovered}
+          muted={true}
+          controls={false}
+          width="100%"
+          height="200px"
+          object-fit="cover"
         />
       ) : (
-        <CardMedia component="img" src={previewImageLink} />
-      )} */}
-
-      {/* {hasVideo && (
         <CardMedia
           component="img"
           src={`${previewImageLink}/cover.webp`}
           width="100%"
-          height="auto"
-          alt=""
-          style={{ display: hovered ? 'none' : 'block' }}
+          height="200px"
+          alt={title}
+          style={{ display: 'block' }}
         />
-      )} */}
+      )}
+
       <CardActions>
         <Button size="small" color="primary">
-          {hasVideo ? 'Watch video' : 'View course'}
+          View course
         </Button>
       </CardActions>
-      <CardContent
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-      >
+      <CardContent>
         <Typography gutterBottom variant="h6" component="h2">
           {title}
         </Typography>
-        {/* <Typography variant="body2" color="text.secondary">
-          {skills.join(', ')}
-        </Typography> */}
-        <Typography variant="body2" color="text.secondary">
+        <Typography gutterBottom variant="body2" color="text.secondary">
           {lessonsCount} Lessons
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Rating: {rating}
         </Typography>
+
+        {skills && (
+          <CardActions disableSpacing style={{ padding: 0 }}>
+            <Typography variant="h6" color="text.secondary">
+              Skills
+            </Typography>
+            <ExpandMore
+              expand={expanded}
+              onClick={handleExpandClick}
+              aria-expanded={expanded}
+              aria-label="more"
+            >
+              <ExpandMoreIcon />
+            </ExpandMore>
+          </CardActions>
+        )}
+        {skills && (
+          <Collapse in={expanded} timeout="auto" unmountOnExit>
+            <CardContent>
+              <List>
+                {skills.map(skill => (
+                  <ListItem key={skill}>
+                    <ListItemText
+                      primary={skill}
+                      // secondary={secondary ? 'Secondary text' : null}
+                    />
+                  </ListItem>
+                ))}
+              </List>
+              {/* <Typography variant="body2" color="text.secondary" component="ul">
+                {skills.map(skill => (
+                  <li>{skill}</li>
+                ))}
+              </Typography> */}
+            </CardContent>
+          </Collapse>
+        )}
       </CardContent>
     </Card>
   );

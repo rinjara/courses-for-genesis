@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import './App.css';
+// import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import Course from './pages/Course/Course';
 import Courses from './pages/Courses/Courses';
