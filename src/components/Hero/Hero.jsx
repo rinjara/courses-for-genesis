@@ -1,7 +1,7 @@
 import { Box, Button, Container, Stack, Typography } from '@mui/material';
 import React from 'react';
 
-function Hero() {
+const Hero = () => {
   return (
     <Box
       sx={{
@@ -43,6 +43,6 @@ function Hero() {
       </Container>
     </Box>
   );
-}
+};
 
 export default Hero;

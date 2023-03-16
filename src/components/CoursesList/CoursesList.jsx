@@ -2,7 +2,7 @@ import { Container, Grid } from '@mui/material';
 import React from 'react';
 import CourseCard from '../CourseCard/CourseCard';
 
-function CoursesList({ courses }) {
+const CoursesList = ({ courses }) => {
   return (
     <Container sx={{ py: 8 }} maxWidth="lg">
       <Grid container spacing={4}>
@@ -14,6 +14,6 @@ function CoursesList({ courses }) {
       </Grid>
     </Container>
   );
-}
+};
 
 export default CoursesList;

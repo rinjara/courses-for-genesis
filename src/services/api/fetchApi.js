@@ -30,3 +30,14 @@ export const getCoursesList = async () => {
     throw error;
   }
 };
+
+export const getCourse = async () => {
+  try {
+    await getToken();
+    const { data } = await instance.get('/core/preview-courses');
+    return data.courses;
+  } catch (error) {
+    console.log(error.message);
+    throw error;
+  }
+};

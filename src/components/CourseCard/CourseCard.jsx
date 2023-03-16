@@ -27,7 +27,7 @@ const ExpandMore = styled(props => {
   }),
 }));
 
-function CourseCard({ data }) {
+const CourseCard = ({ data }) => {
   const [hovered, setHovered] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
@@ -122,6 +122,6 @@ function CourseCard({ data }) {
       </CardContent>
     </Card>
   );
-}
+};
 
 export default CourseCard;
