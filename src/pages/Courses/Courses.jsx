@@ -24,7 +24,7 @@ const Courses = () => {
   };
 
   return (
-    <main>
+    <section>
       <Hero />
       {courses && (
         <Container>
@@ -36,7 +36,7 @@ const Courses = () => {
           />
         </Container>
       )}
-    </main>
+    </section>
   );
 };
 

@@ -15,6 +15,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
 import styled from '@emotion/styled';
+import { NavLink } from 'react-router-dom';
 
 const ExpandMore = styled(props => {
   const { expand, ...other } = props;
@@ -35,9 +36,11 @@ const CourseCard = ({ data }) => {
     setExpanded(!expanded);
   };
 
-  const { title, previewImageLink, lessonsCount, rating, meta } = data;
+  const { id, title, previewImageLink, lessonsCount, rating, meta } = data;
   const { skills, courseVideoPreview } = meta;
   const hasVideo = courseVideoPreview !== undefined;
+
+  const handleClick = () => {};
 
   return (
     <Card
@@ -68,7 +71,13 @@ const CourseCard = ({ data }) => {
       )}
 
       <CardActions>
-        <Button size="small" color="primary">
+        <Button
+          size="small"
+          color="primary"
+          onClick={handleClick}
+          component={NavLink}
+          to={`course/${id}`}
+        >
           View course
         </Button>
       </CardActions>

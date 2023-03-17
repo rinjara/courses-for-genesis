@@ -31,11 +31,11 @@ export const getCoursesList = async () => {
   }
 };
 
-export const getCourse = async () => {
+export const getCourse = async courseId => {
   try {
     await getToken();
-    const { data } = await instance.get('/core/preview-courses');
-    return data.courses;
+    const { data } = await instance.get(`/core/preview-courses/${courseId}`);
+    return data;
   } catch (error) {
     console.log(error.message);
     throw error;
