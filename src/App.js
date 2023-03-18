@@ -1,12 +1,18 @@
-import { Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 // import './App.css';
 // import NavBar from './components/NavBar/NavBar';
-import Course from './pages/Course/Course';
-import Courses from './pages/Courses/Courses';
+// import Course from './pages/Course/Course';
+// import Courses from './pages/Courses/Courses';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
-import SharedLayout from './components/SharedLayout/SharedLayout';
+// import SharedLayout from './components/SharedLayout/SharedLayout';
+
+const SharedLayout = lazy(() =>
+  import('./components/SharedLayout/SharedLayout.jsx')
+);
+const Courses = lazy(() => import('./pages/Courses/Courses.jsx'));
+const Course = lazy(() => import('./pages/Course/Course.jsx'));
 
 const theme = createTheme();
 
