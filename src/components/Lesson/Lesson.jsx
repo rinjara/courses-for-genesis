@@ -25,7 +25,7 @@ import ReactPlayer from 'react-player';
 //   }
 // };
 
-const Lesson = ({ lessonData }) => {
+const Lesson = ({ lessonData, handleLessonsChange, index }) => {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -40,7 +40,11 @@ const Lesson = ({ lessonData }) => {
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        <CardActionArea>
+        <CardActionArea
+          onClick={() => {
+            handleLessonsChange(index);
+          }}
+        >
           <Box sx={{ width: 300, height: 150 }}>
             {hovered && lessonData.status !== 'locked' ? (
               <ReactPlayer

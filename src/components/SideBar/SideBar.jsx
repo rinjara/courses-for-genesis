@@ -22,7 +22,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-start',
 }));
 
-function SideBar({ usedData, course }) {
+function SideBar({ usedData, course, handleLessonsChange }) {
   return (
     <>
       <Toolbar style={{ position: 'absolute', right: 8, top: 0, gap: 16 }}>
@@ -67,7 +67,11 @@ function SideBar({ usedData, course }) {
               key={lesson.id}
               style={{ display: 'flex', flexDirection: 'column' }}
             >
-              <Lesson lessonData={lesson} />
+              <Lesson
+                index={index}
+                lessonData={lesson}
+                handleLessonsChange={handleLessonsChange}
+              />
             </ListItem>
           ))}
         </List>

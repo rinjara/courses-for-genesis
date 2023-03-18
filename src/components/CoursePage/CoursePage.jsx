@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 // import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
 import ReactPlayer from 'react-player';
-import { CardMedia } from '@mui/material';
+import { Box, CardMedia } from '@mui/material';
 
 const Wrapper = styled('div', { shouldForwardProp: prop => prop !== 'open' })(
   ({ theme, open, drawerwidth }) => ({
@@ -54,14 +54,16 @@ export default function PersistentDrawerRight({ course, usedData }) {
       <Typography align="justify" paragraph>
         {course.description}
       </Typography>
-      <div
+      <Box
         style={{
           width: 750,
           height: 350,
         }}
       >
         <ReactPlayer
-          url={`https://cors-proxy.fringe.zone/${course.lessons[0].link}`}
+          url={`https://cors-proxy.fringe.zone/${
+            course.lessons[usedData.lesson].link
+          }`}
           playing
           loop
           muted={false}
@@ -71,7 +73,11 @@ export default function PersistentDrawerRight({ course, usedData }) {
           // object-fit="cover"
           // light={`https://cors-proxy.fringe.zone/${course.lessons[0].previewImageLink}`}
         />
-      </div>
+      </Box>
+      <Typography variant="h4" component="h4">
+        Lesson {course.lessons[usedData.lesson].order}: "
+        {course.lessons[usedData.lesson].title}"
+      </Typography>
     </Wrapper>
   );
 }
