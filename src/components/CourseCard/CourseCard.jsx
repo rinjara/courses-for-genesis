@@ -113,18 +113,10 @@ const CourseCard = ({ data }) => {
               <List>
                 {skills.map(skill => (
                   <ListItem key={skill}>
-                    <ListItemText
-                      primary={skill}
-                      // secondary={secondary ? 'Secondary text' : null}
-                    />
+                    <ListItemText primary={skill} />
                   </ListItem>
                 ))}
               </List>
-              {/* <Typography variant="body2" color="text.secondary" component="ul">
-                {skills.map(skill => (
-                  <li>{skill}</li>
-                ))}
-              </Typography> */}
             </CardContent>
           </Collapse>
         )}

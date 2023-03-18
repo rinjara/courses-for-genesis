@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import PersistentDrawerRight from '../../components/CoursePage/CoursePage';
+import CoursePage from '../../components/CoursePage/CoursePage';
 import { getCourse } from '../../services/api/fetchApi';
 import { useParams } from 'react-router-dom';
 import SideBar from '../../components/SideBar/SideBar';
@@ -46,13 +46,12 @@ const Course = () => {
     <>
       {courseData && (
         <>
-          {/* <h2>{courseData.title}</h2> */}
           <SideBar
             course={courseData}
             usedData={usedData}
             handleLessonsChange={handleLessonsChange}
           />
-          <PersistentDrawerRight course={courseData} usedData={usedData} />
+          <CoursePage course={courseData} usedData={usedData} />
         </>
       )}
     </>

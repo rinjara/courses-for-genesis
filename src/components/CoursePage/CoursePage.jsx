@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
-// import Box from '@mui/material/Box';
-// import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
-import ReactPlayer from 'react-player';
+// import ReactPlayer from 'react-player';
 import { Box, CardMedia } from '@mui/material';
+import VideoPlayer from '../VideoPlayer/VideoPlayer';
 
 const Wrapper = styled('div', { shouldForwardProp: prop => prop !== 'open' })(
   ({ theme, open, drawerwidth }) => ({
@@ -31,20 +30,15 @@ const Wrapper = styled('div', { shouldForwardProp: prop => prop !== 'open' })(
   })
 );
 
-export default function PersistentDrawerRight({ course, usedData }) {
+const CoursePage = ({ course, usedData }) => {
   return (
-    // <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-    //   <CssBaseline />
     <Wrapper open={usedData.isOpen} drawerwidth={usedData.drawerWidth}>
-      {/* <Typography variant="h6" component="p">
-        Your course:
-      </Typography> */}
       <CardMedia
         component="img"
         src={`${course.previewImageLink}/cover.webp`}
         width="100%"
         height="250px"
-        // alt={title}
+        alt={course.title}
         style={{ display: 'block', objectFit: 'contain' }}
       />
 
@@ -60,7 +54,13 @@ export default function PersistentDrawerRight({ course, usedData }) {
           height: 350,
         }}
       >
-        <ReactPlayer
+        <VideoPlayer
+          URL={`https://cors-proxy.fringe.zone/${
+            course.lessons[usedData.lesson].link
+          }`}
+          muted={false}
+        />
+        {/* <ReactPlayer
           url={`https://cors-proxy.fringe.zone/${
             course.lessons[usedData.lesson].link
           }`}
@@ -72,7 +72,7 @@ export default function PersistentDrawerRight({ course, usedData }) {
           height="100%"
           // object-fit="cover"
           // light={`https://cors-proxy.fringe.zone/${course.lessons[0].previewImageLink}`}
-        />
+        /> */}
       </Box>
       <Typography variant="h4" component="h4">
         Lesson {course.lessons[usedData.lesson].order}: "
@@ -80,4 +80,6 @@ export default function PersistentDrawerRight({ course, usedData }) {
       </Typography>
     </Wrapper>
   );
-}
+};
+
+export default CoursePage;

@@ -33,8 +33,6 @@ const Lesson = ({ lessonData, handleLessonsChange, index }) => {
       <Typography gutterBottom variant="h5" component="h3">
         Lesson {lessonData.order}
       </Typography>
-      {/* <video controls src={`${lessonData.link}`}></video> */}
-      {/* {videoPlay(lessonData.link)} */}
       <Card
         sx={{ maxWidth: 345 }}
         onMouseEnter={() => setHovered(true)}
