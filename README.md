@@ -11,6 +11,7 @@ styling.
 - [Getting Started](#getting-started)
 - [Features](#features)
 - [Demo](#demo)
+- [Performance] (#performance)
 - [Contributing](#contributing)
 
 ## Getting Started
@@ -26,16 +27,36 @@ Clone the repository: git clone
 
 ## Features
 
-- Browse Courses Users can browse courses on the homepage or by clicking the
+- Browse Courses: Users can browse courses on the homepage or by clicking the
   "Courses" link in the navigation bar. Courses are displayed as cards with a
   course image, title, and author.
 
-- Choose Course Users can choose own course and whatch lessons.
+- Choose Course: Users can choose own course and whatch lessons.
 
 ## Demo
 
 You can see a live demo of this project
 [here](https://rinjara.github.io/courses-for-genesis/).
+
+## Performance
+
+#### The following performance metrics were achieved for the website:
+
+- First Contentful Paint (FCP): 1.2 seconds
+- Largest Contentful Paint (LCP): 2.5 seconds
+- Time to Interactive (TTI): 3.2 seconds
+- Total Blocking Time (TBT): 0 ms
+- Cumulative Layout Shift (CLS): 0.01
+
+These metrics were obtained using
+[Google PageSpeed Insights](https://pagespeed.web.dev/) .
+
+While there is always room for improvement, these results are considered
+satisfactory for the scope and scale of this project.
+
+![Project performance on Decktop skreens](./assets/Desktop-performance.jpg)
+
+![Project performance on Mobile skreens](./assets/Mobile-performance.jpg)
 
 ## Contributing
 
