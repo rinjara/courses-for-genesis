@@ -52,10 +52,11 @@ const VideoPlayer = ({ URL, muted }) => {
         default:
           Notify.warning('An unknown error occurred while playing the video');
       }
+    } else {
+      Notify.warning(
+        'An unknown error occurred while playing the video. Please, reload the page if needed'
+      );
     }
-    // else {
-    //   Notify.warning('An unknown error occurred while playing the video');
-    // }
   };
 
   return (

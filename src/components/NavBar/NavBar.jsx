@@ -19,22 +19,10 @@ const NavBar = () => {
     <Toolbar>
       <Logo color="white" />
 
-      <Button
-        variant="undefined"
-        component={NavLink}
-        to="/"
-        // color="secondary"
-      >
+      <Button variant="undefined" component={NavLink} to="/">
         Courses
       </Button>
-      <Button
-        onClick={handleClick}
-        variant="undefined"
-        // component={NavLink}
-        // to={lastID()}
-        // disabled
-        // color="secondary"
-      >
+      <Button onClick={handleClick} variant="undefined">
         My course
       </Button>
     </Toolbar>

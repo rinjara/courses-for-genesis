@@ -5,7 +5,6 @@ import {
   CardContent,
   CardMedia,
   Collapse,
-  IconButton,
   List,
   ListItem,
   ListItemText,
@@ -14,26 +13,13 @@ import {
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
-import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 import { save } from '../../services/localStorage/storage.js';
-// import { validateImgLink } from '../../utils/validations.js';
-
-const ExpandMore = styled(props => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
+import { ExpandMore } from './CourseCard.styled';
 
 const CourseCard = ({ data }) => {
   const [hovered, setHovered] = useState(false);
   const [expanded, setExpanded] = useState(false);
-  // const [hasVideo, setHasVideo] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -41,13 +27,6 @@ const CourseCard = ({ data }) => {
 
   const { id, title, previewImageLink, lessonsCount, rating, meta } = data;
   const { skills, courseVideoPreview } = meta;
-  // const URL = `https://cors-proxy.fringe.zone/${courseVideoPreview.link}`;
-
-  // if (courseVideoPreview !== undefined) {
-  //   validateImgLink(URL).then(res => {
-  //     setHasVideo(res);
-  //   });
-  // }
   const hasVideo = courseVideoPreview !== undefined;
 
   const handleClick = () => {
@@ -82,9 +61,9 @@ const CourseCard = ({ data }) => {
         />
       )}
 
-      <CardActions>
+      <CardActions style={{ display: 'flex', justifyContent: 'center' }}>
         <Button
-          size="small"
+          variant="contained"
           color="primary"
           onClick={handleClick}
           component={NavLink}

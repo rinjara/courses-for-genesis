@@ -17,7 +17,6 @@ const Course = () => {
   useEffect(() => {
     getCourse(courseId)
       .then(response => {
-        console.log(response);
         setCourseData(response);
 
         const lessonProgress = load('lessonProgress');
