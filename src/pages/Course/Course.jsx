@@ -4,6 +4,7 @@ import { getCourse } from '../../services/api/fetchApi';
 import { useParams } from 'react-router-dom';
 import SideBar from '../../components/SideBar/SideBar';
 import { useTheme } from '@mui/material';
+import { load, save } from '../../services/localStorage/storage';
 
 const Course = () => {
   const [courseData, setCourseData] = useState(null);
@@ -15,6 +16,13 @@ const Course = () => {
     getCourse(courseId).then(response => {
       console.log(response);
       setCourseData(response);
+
+      const lessonProgress = load('lessonProgress');
+      if (lessonProgress) {
+        if (Object.keys(lessonProgress).indexOf(courseId) !== -1) {
+          setLessonNumber(lessonProgress[courseId]);
+        }
+      }
     });
   }, [courseId]);
 
@@ -30,6 +38,10 @@ const Course = () => {
   };
 
   const handleLessonsChange = function (lessonOrder) {
+    const lessonProgress = load('lessonProgress') || {};
+    lessonProgress[courseId] = lessonOrder;
+    save('lessonProgress', lessonProgress);
+
     setLessonNumber(lessonOrder);
   };
 
