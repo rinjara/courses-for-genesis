@@ -16,6 +16,7 @@ import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
+import { save } from '../../services/localStorage/storage.js';
 
 const ExpandMore = styled(props => {
   const { expand, ...other } = props;
@@ -40,7 +41,9 @@ const CourseCard = ({ data }) => {
   const { skills, courseVideoPreview } = meta;
   const hasVideo = courseVideoPreview !== undefined;
 
-  const handleClick = () => {};
+  const handleClick = () => {
+    save('lastCourseId', id);
+  };
 
   return (
     <Card

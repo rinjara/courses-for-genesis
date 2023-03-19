@@ -9,18 +9,10 @@ import {
 } from '@mui/material';
 import React from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
-import { styled } from '@mui/material/styles';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Lesson from '../Lesson/Lesson';
-
-const DrawerHeader = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  padding: theme.spacing(0, 1),
-  ...theme.mixins.toolbar,
-  justifyContent: 'flex-start',
-}));
+import { DrawerHeader } from './SideBar.styled';
 
 function SideBar({ usedData, course, handleLessonsChange }) {
   return (

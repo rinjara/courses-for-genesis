@@ -6,25 +6,6 @@ import Typography from '@mui/material/Typography';
 import { Box, CardActionArea } from '@mui/material';
 import ReactPlayer from 'react-player';
 
-// import Hls from 'hls.js';
-
-// const videoPlay = URL => {
-//   var video = document.getElementById('video');
-//   if (Hls.isSupported()) {
-//     var hls = new Hls();
-//     hls.loadSource(`https://cors-proxy.fringe.zone/${URL}`);
-//     hls.attachMedia(video);
-//     hls.on(Hls.Events.MANIFEST_PARSED, function () {
-//       video.play();
-//     });
-//   } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-//     video.src = `https://cors-proxy.fringe.zone/${URL}`;
-//     video.addEventListener('canplay', function () {
-//       video.play();
-//     });
-//   }
-// };
-
 const Lesson = ({ lessonData, handleLessonsChange, index }) => {
   const [hovered, setHovered] = useState(false);
 

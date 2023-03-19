@@ -2,6 +2,7 @@ import { AppBar } from '@mui/material';
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
+import Loader from '../../components/Loader/Loader';
 
 function SharedLayout() {
   return (
@@ -10,7 +11,7 @@ function SharedLayout() {
         <NavBar />
       </AppBar>
       <main>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </main>

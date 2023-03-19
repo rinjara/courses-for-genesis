@@ -1,34 +1,8 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-// import ReactPlayer from 'react-player';
 import { Box, CardMedia } from '@mui/material';
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
-
-const Wrapper = styled('div', { shouldForwardProp: prop => prop !== 'open' })(
-  ({ theme, open, drawerwidth }) => ({
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: '20px',
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    paddingTop: 64,
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginRight: 0,
-    ...(open && {
-      transition: theme.transitions.create('margin', {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginRight: drawerwidth,
-    }),
-  })
-);
+import { Wrapper } from './CoursePage.styled';
 
 const CoursePage = ({ course, usedData }) => {
   return (
@@ -60,19 +34,6 @@ const CoursePage = ({ course, usedData }) => {
           }`}
           muted={false}
         />
-        {/* <ReactPlayer
-          url={`https://cors-proxy.fringe.zone/${
-            course.lessons[usedData.lesson].link
-          }`}
-          playing
-          loop
-          muted={false}
-          controls={true}
-          width="100%"
-          height="100%"
-          // object-fit="cover"
-          // light={`https://cors-proxy.fringe.zone/${course.lessons[0].previewImageLink}`}
-        /> */}
       </Box>
       <Typography variant="h4" component="h4">
         Lesson {course.lessons[usedData.lesson].order}: "

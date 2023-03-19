@@ -5,25 +5,29 @@ import { useParams } from 'react-router-dom';
 import SideBar from '../../components/SideBar/SideBar';
 import { useTheme } from '@mui/material';
 import { load, save } from '../../services/localStorage/storage';
+import Loader from '../../components/Loader/Loader';
 
 const Course = () => {
   const [courseData, setCourseData] = useState(null);
   const [open, setOpen] = useState(true);
   const [lessonNumber, setLessonNumber] = useState(0);
+  const [isCourseLoading, setIsCourseLoading] = useState(true);
   const { courseId } = useParams();
 
   useEffect(() => {
-    getCourse(courseId).then(response => {
-      console.log(response);
-      setCourseData(response);
+    getCourse(courseId)
+      .then(response => {
+        console.log(response);
+        setCourseData(response);
 
-      const lessonProgress = load('lessonProgress');
-      if (lessonProgress) {
-        if (Object.keys(lessonProgress).indexOf(courseId) !== -1) {
-          setLessonNumber(lessonProgress[courseId]);
+        const lessonProgress = load('lessonProgress');
+        if (lessonProgress) {
+          if (Object.keys(lessonProgress).indexOf(courseId) !== -1) {
+            setLessonNumber(lessonProgress[courseId]);
+          }
         }
-      }
-    });
+      })
+      .then(() => setIsCourseLoading(false));
   }, [courseId]);
 
   const theme = useTheme();
@@ -56,6 +60,7 @@ const Course = () => {
 
   return (
     <>
+      {isCourseLoading && <Loader />}
       {courseData && (
         <>
           <SideBar

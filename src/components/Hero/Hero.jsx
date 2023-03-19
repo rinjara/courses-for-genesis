@@ -1,7 +1,20 @@
 import { Box, Button, Container, Stack, Typography } from '@mui/material';
+import { Notify } from 'notiflix';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { load } from '../../services/localStorage/storage';
 
 const Hero = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    const lastCourse = load('lastCourseId');
+    if (!lastCourse) {
+      Notify.info('Please, choose your course in the list below!');
+      return;
+    }
+    navigate(`/course/${lastCourse}`);
+  };
+
   return (
     <Box
       sx={{
@@ -37,8 +50,9 @@ const Hero = () => {
           spacing={2}
           justifyContent="center"
         >
-          <Button variant="contained">Main call to action</Button>
-          <Button variant="outlined">Secondary action</Button>
+          <Button variant="contained" onClick={handleClick}>
+            Continue My Course
+          </Button>
         </Stack>
       </Container>
     </Box>
