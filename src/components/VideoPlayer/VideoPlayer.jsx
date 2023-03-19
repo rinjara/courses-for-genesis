@@ -1,3 +1,4 @@
+import { Notify } from 'notiflix';
 import { useRef } from 'react';
 import ReactPlayer from 'react-player';
 import { load, save } from '../../services/localStorage/storage';
@@ -26,8 +27,31 @@ const VideoPlayer = ({ URL, muted }) => {
     save('videoProgress', { [URL]: 0 });
   };
 
-  const handlePlayerError = error => {
-    console.log('An error occurred:', error);
+  const handlePlayerError = e => {
+    if (e && e.target && e.target.error && e.target.error.code) {
+      switch (e.target.error.code) {
+        case 1:
+          Notify.warning('The video is not found or has been removed');
+          break;
+        case 2:
+          Notify.warning('The video is not playable in the current browser');
+          break;
+        case 3:
+          Notify.warning('The video has an invalid source');
+          break;
+        case 4:
+          Notify.info('To continue your lesson, please click play button');
+          break;
+        case 5:
+          Notify.warning('The video is too long');
+          break;
+        case 6:
+          Notify.warning('The video is not supported');
+          break;
+        default:
+          Notify.warning('An unknown error occurred while playing the video');
+      }
+    }
   };
 
   return (

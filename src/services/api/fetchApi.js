@@ -1,3 +1,4 @@
+import { Notify } from 'notiflix';
 import instance from './axiosConfig';
 
 const setToken = token => {
@@ -26,7 +27,7 @@ export const getCoursesList = async () => {
     const { data } = await instance.get('/core/preview-courses');
     return data.courses;
   } catch (error) {
-    console.log(error.message);
+    Notify.failure('Oooops! Something goes wrong. Please, try again later!');
     throw error;
   }
 };
@@ -37,7 +38,7 @@ export const getCourse = async courseId => {
     const { data } = await instance.get(`/core/preview-courses/${courseId}`);
     return data;
   } catch (error) {
-    console.log(error.message);
+    Notify.failure('Oooops! Something goes wrong. Please, try again later!');
     throw error;
   }
 };

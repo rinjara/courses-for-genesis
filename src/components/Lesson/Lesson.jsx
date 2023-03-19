@@ -5,6 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Box, CardActionArea } from '@mui/material';
 import ReactPlayer from 'react-player';
+import { Notify } from 'notiflix';
 
 const Lesson = ({ lessonData, handleLessonsChange, index }) => {
   const [hovered, setHovered] = useState(false);
@@ -21,6 +22,12 @@ const Lesson = ({ lessonData, handleLessonsChange, index }) => {
       >
         <CardActionArea
           onClick={() => {
+            if (lessonData.status === 'locked') {
+              Notify.failure(
+                'This lesson is locked. Please, follow the order!'
+              );
+              return;
+            }
             handleLessonsChange(index);
           }}
         >
