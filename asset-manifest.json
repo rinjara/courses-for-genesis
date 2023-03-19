@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/courses-for-genesis/static/css/main.cddef958.css",
-    "main.js": "/courses-for-genesis/static/js/main.e8071f18.js",
+    "main.js": "/courses-for-genesis/static/js/main.b5bebfe6.js",
     "static/js/769.9c412a70.chunk.js": "/courses-for-genesis/static/js/769.9c412a70.chunk.js",
     "static/js/723.8414f742.chunk.js": "/courses-for-genesis/static/js/723.8414f742.chunk.js",
     "static/js/224.f55aea31.chunk.js": "/courses-for-genesis/static/js/224.f55aea31.chunk.js",
@@ -11,7 +11,7 @@
     "static/js/261.4fee2c05.chunk.js": "/courses-for-genesis/static/js/261.4fee2c05.chunk.js",
     "index.html": "/courses-for-genesis/index.html",
     "main.cddef958.css.map": "/courses-for-genesis/static/css/main.cddef958.css.map",
-    "main.e8071f18.js.map": "/courses-for-genesis/static/js/main.e8071f18.js.map",
+    "main.b5bebfe6.js.map": "/courses-for-genesis/static/js/main.b5bebfe6.js.map",
     "769.9c412a70.chunk.js.map": "/courses-for-genesis/static/js/769.9c412a70.chunk.js.map",
     "723.8414f742.chunk.js.map": "/courses-for-genesis/static/js/723.8414f742.chunk.js.map",
     "224.f55aea31.chunk.js.map": "/courses-for-genesis/static/js/224.f55aea31.chunk.js.map",
@@ -22,6 +22,6 @@
   },
   "entrypoints": [
     "static/css/main.cddef958.css",
-    "static/js/main.e8071f18.js"
+    "static/js/main.b5bebfe6.js"
   ]
 }
