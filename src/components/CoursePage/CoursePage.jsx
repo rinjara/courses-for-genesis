@@ -24,12 +24,27 @@ const CoursePage = ({ course, usedData }) => {
       </Typography>
       <Box
         sx={{
-          width: {
-            lg: '750px',
+          maxWidth: {
+            lg: '1000px',
           },
           height: {
+            xs: '300px',
+            sm: '450px',
             md: '350px',
           },
+          display: 'flex',
+          flexDirection: {
+            xs: 'column',
+            sm: 'column',
+            md: 'row',
+          },
+          gap: {
+            xs: '6px',
+            sm: '6px',
+            md: '5px',
+          },
+          alignItems: 'end',
+          marginBottom: '25px',
         }}
       >
         <VideoPlayer
@@ -38,6 +53,15 @@ const CoursePage = ({ course, usedData }) => {
           }`}
           muted={false}
         />
+        <div>
+          <Typography variant="subtitle2" component="p">
+            If you want to Increase playback speed - use combination "Ctrl +
+            Shift + S "
+          </Typography>
+          <Typography variant="subtitle2" component="p">
+            If you want to Decrease playback speed - use combination "Ctrl + S"
+          </Typography>
+        </div>
       </Box>
       <Typography variant="h4" component="h3">
         Lesson {course.lessons[usedData.lesson].order}: "

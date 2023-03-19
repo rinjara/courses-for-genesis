@@ -1,5 +1,5 @@
 import { Notify } from 'notiflix';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { load, save } from '../../services/localStorage/storage';
 import Loader from '../Loader/Loader';
@@ -7,6 +7,27 @@ import Loader from '../Loader/Loader';
 const VideoPlayer = ({ URL, muted }) => {
   const [isVideoLoading, setIsVideoLoading] = useState(true);
   const playerRef = useRef(null);
+  const [playbackRate, setPlaybackRate] = useState(1.0);
+
+  useEffect(() => {
+    const handleKeyDown = event => {
+      if (event.ctrlKey && event.code === 'KeyS') {
+        if (event.shiftKey) {
+          // Increase playback speed with Ctrl + Shift + S
+          setPlaybackRate(Math.min(playbackRate + 0.25, 4));
+        } else {
+          // Decrease playback speed with Ctrl + S
+          setPlaybackRate(Math.max(playbackRate - 0.25, 0.5));
+        }
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  });
+
   const getVideoProgress = () => {
     const videoProgress = load('videoProgress');
     if (videoProgress) {
@@ -79,6 +100,7 @@ const VideoPlayer = ({ URL, muted }) => {
         onEnded={handleVideoEnd}
         onError={handlePlayerError}
         ref={playerRef}
+        playbackRate={playbackRate}
       />
     </>
   );
