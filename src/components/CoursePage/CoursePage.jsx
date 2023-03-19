@@ -16,16 +16,20 @@ const CoursePage = ({ course, usedData }) => {
         style={{ display: 'block', objectFit: 'contain' }}
       />
 
-      <Typography variant="h3" component="h2">
+      <Typography align="center" variant="h3" component="h2">
         "{course.title}"
       </Typography>
       <Typography align="justify" paragraph>
         {course.description}
       </Typography>
       <Box
-        style={{
-          width: 750,
-          height: 350,
+        sx={{
+          width: {
+            lg: '750px',
+          },
+          height: {
+            md: '350px',
+          },
         }}
       >
         <VideoPlayer
@@ -35,7 +39,7 @@ const CoursePage = ({ course, usedData }) => {
           muted={false}
         />
       </Box>
-      <Typography variant="h4" component="h4">
+      <Typography variant="h4" component="h3">
         Lesson {course.lessons[usedData.lesson].order}: "
         {course.lessons[usedData.lesson].title}"
       </Typography>

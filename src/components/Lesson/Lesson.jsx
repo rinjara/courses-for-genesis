@@ -16,7 +16,11 @@ const Lesson = ({ lessonData, handleLessonsChange, index }) => {
         Lesson {lessonData.order}
       </Typography>
       <Card
-        sx={{ maxWidth: 345 }}
+        sx={{
+          maxWidth: {
+            lg: 345,
+          },
+        }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
@@ -31,7 +35,14 @@ const Lesson = ({ lessonData, handleLessonsChange, index }) => {
             handleLessonsChange(index);
           }}
         >
-          <Box sx={{ width: 300, height: 150 }}>
+          <Box
+            sx={{
+              height: 150,
+              maxWidth: {
+                md: '300px',
+              },
+            }}
+          >
             {hovered && lessonData.status !== 'locked' ? (
               <ReactPlayer
                 url={`https://cors-proxy.fringe.zone/${lessonData.link}`}
@@ -55,7 +66,7 @@ const Lesson = ({ lessonData, handleLessonsChange, index }) => {
           </Box>
 
           <CardContent>
-            <Typography gutterBottom variant="h6" component="h3" align="center">
+            <Typography gutterBottom variant="h6" component="h4" align="center">
               "{lessonData.title}"
             </Typography>
             <Typography variant="body2" color="text.secondary">

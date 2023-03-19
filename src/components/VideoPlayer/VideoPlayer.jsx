@@ -1,11 +1,12 @@
 import { Notify } from 'notiflix';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { load, save } from '../../services/localStorage/storage';
+import Loader from '../Loader/Loader';
 
 const VideoPlayer = ({ URL, muted }) => {
+  const [isVideoLoading, setIsVideoLoading] = useState(true);
   const playerRef = useRef(null);
-
   const getVideoProgress = () => {
     const videoProgress = load('videoProgress');
     if (videoProgress) {
@@ -52,23 +53,33 @@ const VideoPlayer = ({ URL, muted }) => {
           Notify.warning('An unknown error occurred while playing the video');
       }
     }
+    // else {
+    //   Notify.warning('An unknown error occurred while playing the video');
+    // }
   };
 
   return (
-    <ReactPlayer
-      url={URL}
-      width="100%"
-      height="100%"
-      playing
-      loop
-      muted={muted}
-      controls={true}
-      onProgress={handleProgress}
-      onReady={() => playerRef.current.seekTo(getVideoProgress())}
-      onEnded={handleVideoEnd}
-      onError={handlePlayerError}
-      ref={playerRef}
-    />
+    <>
+      {isVideoLoading && <Loader />}
+
+      <ReactPlayer
+        url={URL}
+        width="100%"
+        height="100%"
+        playing
+        loop
+        muted={muted}
+        controls={true}
+        onProgress={handleProgress}
+        onReady={() => {
+          playerRef.current.seekTo(getVideoProgress());
+          setIsVideoLoading(false);
+        }}
+        onEnded={handleVideoEnd}
+        onError={handlePlayerError}
+        ref={playerRef}
+      />
+    </>
   );
 };
 
